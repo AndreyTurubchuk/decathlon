@@ -25,6 +25,12 @@ public class Quote {
     @Temporal(TemporalType.TIMESTAMP)
     private Date voteDate;
 
+    @Column(name = "UPVOTE")
+    private int upvote;
+
+    @Column(name = "DOWNVOTE")
+    private int downvote;
+
     public Quote() {
         this.createdDate = new Date();
         this.voteDate = new Date();
@@ -60,5 +66,29 @@ public class Quote {
 
     public void setVoteDate(Date voteDate) {
         this.voteDate = voteDate;
+    }
+
+    public Integer getQuoteId() {
+        return quoteId;
+    }
+
+    public void setQuoteId(Integer quoteId) {
+        this.quoteId = quoteId;
+    }
+
+    public int getUpvote() {
+        return upvote;
+    }
+
+    public void setUpvote(int upvote) {
+        this.upvote = upvote;
+    }
+
+    public int getDownvote() {
+        return downvote;
+    }
+
+    public void setDownvote(int downvote) {
+        this.downvote = downvote;
     }
 }

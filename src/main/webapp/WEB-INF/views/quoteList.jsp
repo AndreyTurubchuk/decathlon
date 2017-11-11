@@ -1,46 +1,37 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: AnTur
-  Date: 11.11.2017
-  Time: 13:45
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<c:url var="root_url" value="/"/>
+<div class="container">
+    <div class="table-header">
+        <td><c:out value="${quoteList.get(0).text}"/></td>
 
-<table class="list-table">
-    <thead>
-    <th>#</th>
+    </div>
 
-    <th>НАЗВАНИЕ</th>
-
-    <th>СОЗДАНО</th>
-
-
-    </thead>
-    <tbody>
-    <c:forEach items="${quoteList}" var="list" step="1" varStatus="loopStatus">
-        <tr class="${loopStatus.index % 2 == 0 ? 'alt' : ''}">
-
-                <td><c:out value="${list.quoterId}"/></td>
-                <td><a href="/department/${list.quoterId}"> <c:out value="${list.text}"/></a></td>
-                <td><fmt:formatDate pattern = "dd-MM-yyyy HH:mm" value = "${list.createdDate}" /></td>
-
-
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+    <div class="table-wrapper">
+        <%--<sf:form method="post" id="quoteForm" action="/upVote">--%>
+             <table class="list-table">
+                <tbody>
+                <c:forEach items="${quoteList}" var="list" step="1" varStatus="loopStatus">
+                    <tr class="${loopStatus.index % 2 == 0 ? 'alt' : ''}">
+                        <td>Top <c:out value="${list.quoterId}"/> quote - <c:out value="${list.upvote + list.downvote}"/></td>
+                        <td><a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=1"
+                               class="create-btn btn-danger">+</a></td>
+                        <td><a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=-1"
+                               class="create-btn btn-danger">-</a>
+                        </td>
+                        <td><a href="#"> Posted</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        <%--</sf:form>--%>
+    </div>
 
 
-УРАААА
-</body>
-</html>
+
+
+</div>

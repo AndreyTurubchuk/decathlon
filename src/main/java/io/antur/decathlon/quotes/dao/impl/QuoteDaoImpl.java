@@ -11,4 +11,9 @@ public class QuoteDaoImpl extends GenericDaoImpl<Quote, Integer> implements Quot
     public QuoteDaoImpl() {
         super(Quote.class);
     }
+
+    public void upVote(int voteId){
+
+
+    }
 }

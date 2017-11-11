@@ -3,9 +3,12 @@ package io.antur.decathlon.quotes.config.application;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
@@ -14,6 +17,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    @Bean
+    ViewResolver tilesViewResolver() {
+        TilesViewResolver viewResolver = new TilesViewResolver();
+        viewResolver.setOrder(0);
+        return viewResolver;
     }
 
     @Bean
@@ -26,11 +36,20 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-    // Настройка стартовой страницы
+    @Bean
+    TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tiles = new TilesConfigurer();
+        //tiles.setDefinitions("/WEB-INF/views/layout/tiles.xml");
+        tiles.setDefinitions("classpath:tiles.xml");
+        tiles.setCheckRefresh(true);
+        return tiles;
+    }
+
+/*    // Настройка стартовой страницы
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-    }
+        registry.addViewController("/").setViewName("quoteList");
+    }*/
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
