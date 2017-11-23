@@ -7,7 +7,9 @@
 <c:url var="root_url" value="/"/>
 <div class="container">
     <div class="table-header">
-        <td><c:out value="${quoteList.get(0).text}"/></td>
+        <c:set var="p">${numberRandomQuote}</c:set>
+
+        <td><c:out value="${quoteList.get(p).text}"/></td>
 
     </div>
 

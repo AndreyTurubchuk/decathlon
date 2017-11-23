@@ -10,5 +10,8 @@ public interface GenericDao<T, K extends Serializable> {
     void delete(T object);
     T getById(K key);
     List<T> getAll();
-    List<T> getAll(String findText);
+    List<T> getTOPorFLOP10(Integer firstLine, Integer addLine, String sortBy, String sortOrder);
+   // List<T> getFLOP10();
+   // List<T> getLAST();
+   // List<T> getAll(String findText);
 }
