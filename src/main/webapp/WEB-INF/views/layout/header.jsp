@@ -22,10 +22,12 @@
              <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <%--Главная--%>
-                    <li><a href="/">PROFILE</a></li>
-                        <li><a href="/">TOP10</a></li>
-                        <li><a href="/">FLOP10</a></li>
-                        <li><a href="/">LAST</a></li>
+                    <li><a href="#">PROFILE</a></li>
+                        <li><a href="/listTOP10">TOP10</a></li>
+                        <li><a href="/listFLOP10">FLOP10</a></li>
+                        <li><a href="/list">ALL</a></li>
+                        <li><a href="#">LAST</a></li>
+
 
 
  <%--                   <sec:authorize access="hasAnyRole('ROLE_ADMIN')">

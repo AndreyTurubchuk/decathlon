@@ -45,11 +45,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return tiles;
     }
 
-/*    // Настройка стартовой страницы
+    // Настройка стартовой страницы
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("quoteList");
-    }*/
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

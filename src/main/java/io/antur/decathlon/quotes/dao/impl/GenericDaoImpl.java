@@ -3,6 +3,7 @@ package io.antur.decathlon.quotes.dao.impl;
 import io.antur.decathlon.quotes.dao.GenericDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,6 +53,17 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
         org.hibernate.query.Query query = getSession().createQuery(String.format("from %s", type.getName()));
         return query.list();
     }
+
+
+
+    @SuppressWarnings("unchecked")
+    public List<T> getTOPorFLOP10(Integer firstLine, Integer addLine, String sortBy, String sortOrder) {
+        Query query = getSession().createQuery(String.format("FROM %s f ORDER BY f.%s %s ", type.getName(), sortBy, sortOrder));
+        query.setFirstResult(firstLine);
+        query.setMaxResults(addLine);
+        return query.list();
+    }
+
 
     //поиск в БД по тексту "findText"
     //принять от пользователя тексовое значение поиска findText
