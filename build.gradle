@@ -15,6 +15,33 @@ repositories {
 war {
     baseName = 'decathlon'
     version = '1'
+    webInf{
+        from('src/main/resources') {
+            include 'util.properties'
+            include 'hibernate.properties'
+            include 'tiles.xml'
+            into('classes/')
+        }
+        from ('src/main/webapp/WEB-INF/views') {
+            into('views')
+        }
+    }
+
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            output.classesDir   = 'build/classes/main'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            include '*.properties'
+            include '*.xml'
+            output.resourcesDir = 'build/classes/main'
+        }
+    }
 }
 
 dependencies {
