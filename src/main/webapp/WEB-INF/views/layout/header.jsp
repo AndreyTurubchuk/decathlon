@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav navbar-right">
 
                     <li>
-                         <a href="${root_url}login">Enter</a>
+                         <a href="#">Enter</a>
                     </li>
 
              </ul>
@@ -23,27 +23,10 @@
                 <ul class="nav navbar-nav">
                     <%--Главная--%>
                     <li><a href="#">PROFILE</a></li>
-                        <li><a href="/listTOP10">TOP10</a></li>
-                        <li><a href="/listFLOP10">FLOP10</a></li>
-                        <li><a href="/list">ALL</a></li>
-                        <li><a href="#">LAST</a></li>
-
-
-
- <%--                   <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
-                        <li class="dropdown">
-                            &lt;%&ndash;Настройки&ndash;%&gt;
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><s:message code="settings"/><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                &lt;%&ndash;Департаменты&ndash;%&gt;
-                                <li><a href="/department/list"><s:message code="departments"/></a></li>
-                                &lt;%&ndash;Пользователи&ndash;%&gt;
-                                <li><a href="/users/list"><s:message code="users"/></a></li>
-                                &lt;%&ndash;Типы запросов&ndash;%&gt;
-                                <li><a href="/requestType/list"><s:message code="request_types"/></a></li>
-                            </ul>
-                        </li>
-                    </sec:authorize>--%>
+                        <li><a href="/decathlon/listTOP10">TOP10</a></li>
+                        <li><a href="/decathlon/listFLOP10">FLOP10</a></li>
+                        <li><a href="/decathlon/list">ALL</a></li>
+                        <li><a href="/decathlon/LAST">LAST</a></li>
                 </ul>
             </div>
         </div>
@@ -56,7 +39,7 @@
 
     <div class="container topnav caption">
         <ul class="nav navbar-nav">
-            <li>User</li>
+            <li>Quotes</li>
         </ul>
     </div>
 </div>

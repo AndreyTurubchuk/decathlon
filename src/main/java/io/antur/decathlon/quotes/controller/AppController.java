@@ -22,7 +22,6 @@ public class AppController {
     public String showAll(final Model model) {
         int size = quoteDao.getAll().size();
         model.addAttribute("quoteList", quoteDao.getAll());
-        model.addAttribute("headerTitle", "quotes");
         model.addAttribute("numberRandomQuote", randInt(0, size));
         return LIST_VIEW;
     }
@@ -30,16 +29,21 @@ public class AppController {
     @RequestMapping(value = "/listTOP10", method = RequestMethod.GET)
     public String showTOP10(final Model model2) {
         model2.addAttribute("quoteList", quoteDao.getTOPorFLOP10(0, 10, "upvote", "DESC"));
-        model2.addAttribute("headerTitle", "quotes");
         return LIST_VIEW;
     }
 
     @RequestMapping(value = "/listFLOP10", method = RequestMethod.GET)
     public String showFLOP10(final Model model3) {
         model3.addAttribute("quoteList", quoteDao.getTOPorFLOP10(0, 10, "downvote", "DESC"));
-        model3.addAttribute("headerTitle", "quotes");
         return LIST_VIEW;
     }
+
+    @RequestMapping(value = "/LAST", method = RequestMethod.GET)
+    public String showLAST(final Model model4) {
+        model4.addAttribute("quoteList", quoteDao.getLAST());
+        return LIST_VIEW;
+    }
+
 
     @RequestMapping(value = "/upVote", method = RequestMethod.GET)
     public String upVote(@RequestParam(value = "id") Integer id, @RequestParam(value = "sign") Integer sign) {

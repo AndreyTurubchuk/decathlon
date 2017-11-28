@@ -64,6 +64,18 @@ public class GenericDaoImpl<T, K extends Serializable> implements GenericDao<T, 
         return query.list();
     }
 
+    @SuppressWarnings("unchecked")
+    public List<T> getLAST() {
+        Query query = getSession().createQuery(String.format("FROM %s f ORDER BY f.quoteId DESC", type.getName()));
+        query.setFirstResult(0);
+        query.setMaxResults(1);
+        return query.list();
+    }
+
+/*    SELECT *
+    FROM quotes
+    ORDER BY quote_id DESC
+    LIMIT 1;*/
 
     //поиск в БД по тексту "findText"
     //принять от пользователя тексовое значение поиска findText
