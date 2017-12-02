@@ -14,4 +14,10 @@
         <put-attribute name="body" value="/WEB-INF/views/quoteList.jsp"/>
     </definition>
 
+    <definition name="quoteAdd" extends="base.definition">
+        <put-attribute name="title" value="DECATHLON | Quote Add"/>
+        <put-attribute name="body" value="/WEB-INF/views/quoteAdd.jsp"/>
+    </definition>
+
+
 </tiles-definitions>
