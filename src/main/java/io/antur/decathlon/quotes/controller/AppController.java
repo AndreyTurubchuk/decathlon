@@ -28,13 +28,21 @@ public class AppController {
 
     @RequestMapping(value = "/listTOP10", method = RequestMethod.GET)
     public String showTOP10(final Model model2) {
-        model2.addAttribute("quoteList", quoteDao.getTOPorFLOP10(0, 10, "upvote", "DESC"));
+        Integer sizeQuote = quoteDao.getAll().size();
+        if (sizeQuote >= 10) {
+            sizeQuote = 10;
+        }
+        model2.addAttribute("quoteList", quoteDao.getTOPorFLOP10(0, sizeQuote, "upvote", "DESC"));
         return LIST_VIEW;
     }
 
     @RequestMapping(value = "/listFLOP10", method = RequestMethod.GET)
     public String showFLOP10(final Model model3) {
-        model3.addAttribute("quoteList", quoteDao.getTOPorFLOP10(0, 10, "downvote", "DESC"));
+        Integer sizeQuote = quoteDao.getAll().size();
+        if (sizeQuote >= 10) {
+            sizeQuote = 10;
+        }
+        model3.addAttribute("quoteList", quoteDao.getTOPorFLOP10(0, sizeQuote, "downvote", "DESC"));
         return LIST_VIEW;
     }
 
