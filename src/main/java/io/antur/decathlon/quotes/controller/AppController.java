@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -25,6 +26,19 @@ public class AppController {
         model.addAttribute("numberRandomQuote", randInt(0, size));
         return LIST_VIEW;
     }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String doGetQuoteAdd() {
+        return "quoteAdd";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+
+    public String doPostQuoteAdd(Quote quote) {
+        quoteDao.saveOrUpdate(quote);
+        return "redirect:/list";
+    }
+
 
     @RequestMapping(value = "/listTOP10", method = RequestMethod.GET)
     public String showTOP10(final Model model2) {

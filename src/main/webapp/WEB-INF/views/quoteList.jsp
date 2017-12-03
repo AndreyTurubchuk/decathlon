@@ -15,25 +15,43 @@
 
     <div class="table-wrapper">
         <%--<sf:form method="post" id="quoteForm" action="/upVote">--%>
-             <table class="list-table">
+
+            <table class="list-table">
                 <tbody>
-                <c:forEach items="${quoteList}" var="list" step="1" varStatus="loopStatus">
-                    <tr class="${loopStatus.index % 2 == 0 ? 'alt' : ''}">
-                        <td>Top <c:out value="${list.quoterId}"/> quote - <c:out value="${list.upvote + list.downvote}"/></td>
-                        <td><a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=1"
+
+
+                    <td>Top <c:out value="${quoteList.get(p).quoterId}"/> quote - <c:out value="${quoteList.get(p).upvote + quoteList.get(p).downvote}"/></td>
+                        <td><a href="${root_url}upVote?id=<c:out value="${quoteList.get(p).quoterId}"/>&sign=1"
                                class="create-btn btn-danger">+</a></td>
-                        <td><a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=-1"
+                        <td><a href="${root_url}upVote?id=<c:out value="${quoteList.get(p).quoterId}"/>&sign=-1"
                                class="create-btn btn-danger">-</a>
                         </td>
                         <td><a href="#"> Posted</a></td>
-                    </tr>
-                </c:forEach>
+
                 </tbody>
+
             </table>
+
+            <div class="table-header">
+                <c:out value="${quoteList.get(p).text}"/>
+            </div>
+
+
+            <table class="list-table">
+            <tbody>
+            <c:forEach items="${quoteList}" var="list" step="1" varStatus="loopStatus">
+                <tr class="${loopStatus.index % 2 == 0 ? 'alt' : ''}">
+                    <td>Top <c:out value="${list.quoterId}"/> quote - <c:out value="${list.upvote + list.downvote}"/></td>
+                    <td><a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=1"
+                           class="create-btn btn-danger">+</a></td>
+                    <td><a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=-1"
+                           class="create-btn btn-danger">-</a>
+                    </td>
+                    <td><a href="#"> Posted</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
         <%--</sf:form>--%>
     </div>
-
-
-
-
 </div>

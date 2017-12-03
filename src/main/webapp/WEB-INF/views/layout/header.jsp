@@ -27,6 +27,7 @@
                         <li><a href="/decathlon/listFLOP10">FLOP10</a></li>
                         <li><a href="/decathlon/list">ALL</a></li>
                         <li><a href="/decathlon/LAST">LAST</a></li>
+                        <li><a href="/decathlon/add">ADD QUOTE</a></li>
                 </ul>
             </div>
         </div>
