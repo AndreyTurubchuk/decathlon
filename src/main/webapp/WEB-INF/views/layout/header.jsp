@@ -7,6 +7,8 @@
 
 <!-- Header -->
 <c:url var="root_url" value="/"/>
+<c:set var="pageContextDecathlon" value="${pageContext.request.contextPath}" />
+
 <nav class="navbar navbar-default navbar-static-top topnav header" role="navigation">
     <div class="container topnav">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,11 +25,11 @@
                 <ul class="nav navbar-nav">
                     <%--Главная--%>
                     <li><a href="#">PROFILE</a></li>
-                        <li><a href="/decathlon/listTOP10">TOP10</a></li>
-                        <li><a href="/decathlon/listFLOP10">FLOP10</a></li>
-                        <li><a href="/decathlon/list">ALL</a></li>
-                        <li><a href="/decathlon/LAST">LAST</a></li>
-                        <li><a href="/decathlon/add">ADD QUOTE</a></li>
+                        <li><a href="${root_url}/listTOP10">TOP10</a></li>
+                        <li><a href="${root_url}/listFLOP10">FLOP10</a></li>
+                        <li><a href="${root_url}/list">ALL</a></li>
+                        <li><a href="${root_url}/LAST">LAST</a></li>
+                        <li><a href="${root_url}/add">ADD QUOTE</a></li>
                 </ul>
             </div>
         </div>
@@ -36,14 +38,14 @@
     <!-- /.container -->
 </nav>
 
-<div class="info-line">
+<%--<div class="info-line">
 
     <div class="container topnav caption">
         <ul class="nav navbar-nav">
             <li>Quotes</li>
         </ul>
     </div>
-</div>
+</div>--%>
 <!-- /Header -->
 
 
