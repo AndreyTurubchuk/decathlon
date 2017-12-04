@@ -1,5 +1,7 @@
 package io.antur.decathlon.quotes.dao;
 
+import io.antur.decathlon.quotes.entity.Quote;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,6 +14,6 @@ public interface GenericDao<T, K extends Serializable> {
     List<T> getAll();
     List<T> getTOPorFLOP10(Integer firstLine, Integer addLine, String sortBy, String sortOrder);
     List<T> getLAST();
-    List<T> getRandom();
+    Quote getRandom();
 
 }
