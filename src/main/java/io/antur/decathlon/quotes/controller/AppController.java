@@ -23,8 +23,22 @@ public class AppController {
     public String showAll(final Model model) {
         int size = quoteDao.getAll().size();
         model.addAttribute("quoteList", quoteDao.getAll());
-        model.addAttribute("numberRandomQuote", randInt(0, size));
+        //model.addAttribute("numberRandomQuote", quoteDao.getRandom().get(0).getQuoterId());
+        model.addAttribute("quoteRandom", quoteDao.getRandom());
+        model.addAttribute("quotePosted", quoteDao.getRandom());
+
+        //model.addAttribute("quoteListRandom", quoteDao.getRandom().get(0).getQuoterId());
         return LIST_VIEW;
+    }
+
+    @RequestMapping(value = "/list2", method = RequestMethod.GET)
+    public String showAll2(final Model model2, @RequestParam("postedNumber") Integer postedNumber) {
+        model2.addAttribute("quoteList", quoteDao.getAll());
+        model2.addAttribute("quoteRandom", quoteDao.getRandom());
+        model2.addAttribute("quotePosted", quoteDao.getById(postedNumber));
+        model2.addAttribute("quotePosted2", "22222222222222222");
+
+        return "redirect:/list";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
