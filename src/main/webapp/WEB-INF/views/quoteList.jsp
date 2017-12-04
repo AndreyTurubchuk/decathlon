@@ -16,7 +16,7 @@
             <div class="table-wrapper">
                 <%--<c:set var="p">${numberRandomQuote}</c:set>--%>
                 <blockquote>
-                    <p><c:out value="${quoteRandom.get(0).text}"/></p>
+                    <p><c:out value="${quoteRandom.text}"/></p>
                 </blockquote>
             </div>
         </div>
@@ -27,25 +27,21 @@
 
         <div class="row">
             <div class="table-wrapper">
-                <p> Top <c:out value="${quotePosted.get(0).quoterId}"/> quote - <c:out value="${quotePosted.get(0).upvote + quotePosted.get(0).downvote}"/></p>
-                <c:out value="${quotePostedText}"/>
+                <p> Top <c:out value="${quotePosted.quoterId}"/> quote - <c:out value="${quotePosted.upvote + quotePosted.downvote}"/></p>
                 <div class="col-sm-1">
-                <a href="${root_url}upVote?id=<c:out value="${quotePosted.get(0).quoterId}"/>&sign=1"
+                    <a href="${root_url}upVote?id=<c:out value="${quotePosted.quoterId}"/>&sign=1&numberQuotePosted=<c:out value="${quotePosted.quoterId}"/>"
                        class="create-btn btn-danger">+</a>
                 </div>
                 <div class="col-sm-1">
-                <a href="${root_url}upVote?id=<c:out value="${quotePosted.get(0).quoterId}"/>&sign=-1"
-                   class="create-btn btn-danger">-</a>
+                    <a href="${root_url}upVote?id=<c:out value="${quotePosted.quoterId}"/>&sign=-1&numberQuotePosted=<c:out value="${quotePosted.quoterId}"/>"
+                       class="create-btn btn-danger">-</a>
                 </div>
                 <div class="col-sm-offset-11">
-                <a href="#"> Posted</a>
-
-
-
+                    <a href="${root_url}list2?postedNumber=<c:out value="${quotePosted.quoterId}"/>"> Posted </a>
                 </div>
                 <p></p>
                 <blockquote>
-                    <p><c:out value="${quotePosted.get(0).text}"/></p>
+                    <p><c:out value="${quotePosted.text}"/></p>
                 </blockquote>
             </div>
         </div>
@@ -55,25 +51,17 @@
         </div>
         <div class="row">
             <div class="table-wrapper">
-<%--                <table class="list-table">
-                    <tbody>--%>
                       <c:forEach items="${quoteList}" var="list" step="1" varStatus="loopStatus">
-                        <%--<tr class="${loopStatus.index % 2 == 0 ? 'alt' : ''}">--%>
                             <p> Top <c:out value="${list.quoterId}"/> quote - <c:out value="${list.upvote + list.downvote}"/></p>
-                          <c:out value="${list.quoterId}"/>
-                          <c:out value="${list.text}"/>
                             <div class="col-sm-1">
-                            <a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=1"
+                            <a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=1&numberQuotePosted=<c:out value="${quotePosted.quoterId}"/>"
                                    class="create-btn btn-danger">+</a>
                             </div>
                             <div class="col-sm-1">
-                            <a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=-1"
+                                <a href="${root_url}upVote?id=<c:out value="${list.quoterId}"/>&sign=-1&numberQuotePosted=<c:out value="${quotePosted.quoterId}"/>"
                                    class="create-btn btn-danger">-</a>
                             </div>
                             <div class="col-sm-offset-11">
-                            <%--<a href="${root_url}list2?postNumber=<c:out value="${list.quoterId}"/>> Posted </a>--%>
-
-                            <%--<a href="${root_url}list2?id=<c:out value="${list.quoterId}"/>>Posted</a>--%>
                             <a href="${root_url}list2?postedNumber=<c:out value="${list.quoterId}"/>"> Posted </a>
 
                             </div>
@@ -81,10 +69,8 @@
                             <div class="row">
                                 <p></p>
                             </div>
-                        <%--</tr>--%>
                       </c:forEach>
-       <%--             </tbody>
-                </table>--%>
+
             </div>
         </div>
 
